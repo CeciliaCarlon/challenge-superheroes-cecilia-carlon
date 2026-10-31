@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: "Press Start 2P", Roboto, "Helvetica Neue", sans-serif; background-color: #121214; overflow-x: hidden; }
+
+.arcade-text {
+    color: #ffffff;
+    text-shadow:
+        -2px -2px 0 #000,  
+        2px -2px 0 #000,
+        -2px  2px 0 #000,
+        2px  2px 0 #000,
+        0px  4px 0 rgba(0, 0, 0, 0.8);
+}

@@ -93,6 +93,7 @@ describe('HeroService', () => {
       const updatedData: Hero = {
         id: 1,
         name: 'Spider-Man Ultimate',
+        superpower: 'Improved powers'
       };
 
       service.updateHero(updatedData).pipe(switchMap(hero => {
@@ -111,6 +112,7 @@ describe('HeroService', () => {
       const nonExistingHero: Hero = {
         id: 999,
         name: 'Wolverine',
+        superpower: 'Mutant with fast healing'
       };
 
       service.updateHero(nonExistingHero).subscribe({

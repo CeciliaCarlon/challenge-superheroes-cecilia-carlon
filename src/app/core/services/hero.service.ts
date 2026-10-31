@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError, delay } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Hero } from '../models/hero.model';
 import { HEROES } from '../mocks/hero.mock';
@@ -15,12 +15,12 @@ export class HeroService {
   constructor() { }
 
   getHeroes(): Observable<Hero[]> {
-    return this.heroes$;
+    return this.heroes$.pipe(delay(2000));
   }
 
   getHeroById(id: number): Observable<Hero | undefined> {
     const hero = this.heroesSubject.getValue().find(h => h.id === id);
-    return of(hero);
+    return of(hero).pipe(delay(2000));
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
@@ -30,6 +30,7 @@ export class HeroService {
 
     return this.heroes$.pipe(
       map(heroes => heroes.filter(hero => hero.name.toLocaleLowerCase().includes(cleanTerm)))
+      ,delay(2000)
     );
   }
 
@@ -41,7 +42,7 @@ export class HeroService {
     const newHero: Hero = { ...hero, id: newId };
 
     this.heroesSubject.next([...currentHeroes, newHero]);
-    return of(newHero);
+    return of(newHero).pipe(delay(2000));
   }
 
   updateHero(updatedHero: Hero): Observable<Hero> {
@@ -54,7 +55,7 @@ export class HeroService {
     updatedHeroes[index] = {...updatedHero};
     this.heroesSubject.next(updatedHeroes);
 
-    return of(updatedHero);
+    return of(updatedHero).pipe(delay(2000));
   }
 
   deleteHero(id: number): Observable<boolean> {
@@ -65,6 +66,6 @@ export class HeroService {
 
     this.heroesSubject.next(filteredHeroes);
 
-    return of(true);
+    return of(true).pipe(delay(2000));
   }
 }
