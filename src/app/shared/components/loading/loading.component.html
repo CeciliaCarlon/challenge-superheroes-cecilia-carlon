@@ -1,0 +1,8 @@
+<div class="arcade-loading-wrapper">
+    <div class="pixel-progress-bar">
+        @for (block of blocks; track block) {
+            <div class="pixel-block" [style.--delay]="getBlockDelay(block)"></div>
+        }
+    </div>  
+    <div class="arcade-loading-text arcade-text">{{ LOADING }}</div>
+</div>

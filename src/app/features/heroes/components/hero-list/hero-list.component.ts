@@ -6,15 +6,12 @@ import { HeroService } from '../../../../core/services/hero.service';
 import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { DraggableScrollDirective } from '../../../../shared/directives/draggable-scroll.directive'
+import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 
 @Component({
   selector: 'app-hero-list',
   standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    DraggableScrollDirective,
-    RouterLink
+  imports: [ CommonModule, MatButtonModule, DraggableScrollDirective, RouterLink, LoadingComponent
   ],
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.scss'

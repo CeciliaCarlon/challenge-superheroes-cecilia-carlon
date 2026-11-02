@@ -1,0 +1,56 @@
+.arcade-loading-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 80px;
+    width: 100%;
+
+    .pixel-progress-bar {
+        display: flex;
+        gap: 4px;
+        padding: 6px;
+        border: 3px solid #ffd700;
+        background: #1a1a24;
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba($color: #FFD700, $alpha: 0.3);
+
+        .pixel-block {
+            width: 18px;
+            height: 28px;
+            background-color: transparent;
+            border: 1px solid rgba($color: #FFD700, $alpha: 0.15);
+            opacity: 0;
+            animation: fillBlock 2s infinite steps(1, end);
+            animation-delay: var(--delay);
+        }
+    }
+
+    .arcade-loading-text {
+        font-size: 0.75rem;
+        color: #ffd700;
+        letter-spacing: 2px;
+        animation: blinkText 0.8s infinite alternate ease-in-out;
+    }
+}
+
+@keyframes fillBlock {
+    0%, 20% {
+        background-color: transparent;
+        opacity: 0;
+    }
+    21%, 100% {
+        background-color: #ffd700;
+        opacity: 1;
+    }
+}
+
+@keyframes blinkText {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
