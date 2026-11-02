@@ -1,0 +1,38 @@
+@if ($hero(); as hero) {
+    <div class="trading-card-wrapper">
+        <div class="trading-card">
+            <div class="card-title-box">
+                <h1 class="arcade-text">{{hero.name | uppercase}}</h1>
+            </div>
+
+            <div class="card-image-container">
+                <img loading="lazy"
+                    [alt]="hero.name"
+                    [draggable]="false"
+                    [src]="hero.imageUrl || 'https://media.licdn.com/dms/image/v2/D4D12AQEbIpDYvCeAWQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1706125694124?e=2147483647&v=beta&t=HsmQkmxUTLIgu6IPZMoz7ihOWdBK4XBDJ7VHCVAJ0Z8'"
+                />
+                <div class="overlay-scanline"></div>
+            </div>
+
+            <div class="card-header-banner">
+                <span>PUBLISHER: {{ hero.publisher || UNKNOWN }}</span>
+            </div>
+
+            @if (hero.alterEgo) {   
+                <div class="card-subtitle-box">
+                    <span class="speech-tag">ALTER EGO</span>
+                    <p>{{hero.alterEgo}}</p>
+                </div>
+            }
+
+            <div class="card-stats-section">
+                <div class="stat-row">
+                    <div class="stat-label">SUPERPOWER</div>
+                    <div class="stat-value">{{ hero.superpower }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+} @else {
+   <app-loading></app-loading>
+}

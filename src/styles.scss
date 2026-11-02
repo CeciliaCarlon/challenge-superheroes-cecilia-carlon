@@ -7,10 +7,5 @@ body { margin: 0; font-family: "Press Start 2P", Roboto, "Helvetica Neue", sans-
 
 .arcade-text {
     color: #ffffff;
-    text-shadow:
-        -2px -2px 0 #000,  
-        2px -2px 0 #000,
-        -2px  2px 0 #000,
-        2px  2px 0 #000,
-        0px  4px 0 rgba(0, 0, 0, 0.8);
+    text-shadow: 2px 2px 0px #000;
 }
