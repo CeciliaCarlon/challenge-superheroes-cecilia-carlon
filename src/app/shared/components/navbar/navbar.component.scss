@@ -1,0 +1,13 @@
+.navbar {
+    width: auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    background-image: url('/src/assets/images/navbar-background.jpeg');
+    background: linear-gradient(rgba(18,18,20,0.85), rgba(18,18,20,0.85));
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}

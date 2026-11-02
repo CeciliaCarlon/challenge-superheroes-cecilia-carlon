@@ -1,11 +1,4 @@
 <div class="arcade-container">
-    <header class="navbar">
-        <button mat-stroked-button class="home-btn arcade-text" routerLink="/" aria-label="Home">
-            <p>Home</p>
-        </button>
-        <h2 class="arcade-title arcade-text">Listado de Superhéroes</h2>
-    </header>
-
     @if (heroes$ | async; as heroes) {
         @if (heroes.length > 0) {
             <div class="heroes-grid" appDraggableScroll>
