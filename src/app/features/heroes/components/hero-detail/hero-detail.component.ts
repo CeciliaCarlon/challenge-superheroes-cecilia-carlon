@@ -19,9 +19,9 @@ const UNKNOWN = 'UNKNOWN';
 })
 export class HeroDetailComponent implements OnInit{
 
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
-  private heroService = inject(HeroService);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly heroService = inject(HeroService);
 
   UNKNOWN = UNKNOWN;
   $hero = signal<Hero | null>(null);
@@ -32,9 +32,15 @@ export class HeroDetailComponent implements OnInit{
       this.heroService.getHeroById(Number(idParam)).pipe(take(1)).subscribe(
         hero => {
           if(hero) this.$hero.set(hero)
-          else this.router.navigate(['/']);
+          else this.goBack();
         }
       );
     }
+  }
+
+  goBack() :void {
+    this.router.navigate(['/']).catch(err => {
+      console.error('Error while navigating: ', err)
+    })
   }
 }
