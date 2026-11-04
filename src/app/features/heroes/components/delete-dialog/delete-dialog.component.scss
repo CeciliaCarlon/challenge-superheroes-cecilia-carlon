@@ -1,0 +1,57 @@
+.arcade-dialog-content {
+    background: #1a1a24;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba($color: #FFD700, $alpha: 0.4);
+
+    .modal-title {
+        color: #ff3333;
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+        line-height: 1.8;
+    }
+
+    .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+
+        .modal-btn {
+            flex: 1;
+            font-size: 0.7rem;
+            padding: 10px 0;
+            border: 2px solid #000;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &.no-btn {
+                background-color: #555;
+                color: #fff;
+                &:hover { background-color: #777; }
+            }
+
+            &.yes-btn {
+                background-color: #ff3333;
+                color: #fff;
+                &:hover { background-color: #e60000; }
+            }
+        }
+    }
+
+    .arcade-loading-text {
+        font-size: 0.75rem;
+        color: #ffd700;
+        letter-spacing: 2px;
+        animation: blinkText 0.8s infinite alternate ease-in-out;
+    }
+
+    @keyframes blinkText {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+}

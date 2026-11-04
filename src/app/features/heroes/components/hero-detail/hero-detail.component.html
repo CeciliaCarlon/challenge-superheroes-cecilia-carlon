@@ -15,21 +15,25 @@
             </div>
 
             <div class="card-header-banner">
-                <span>PUBLISHER: {{ hero.publisher || UNKNOWN }}</span>
+                <span>{{ PUBLISHER }} {{ hero.publisher || UNKNOWN }}</span>
             </div>
 
             @if (hero.alterEgo) {   
                 <div class="card-subtitle-box">
-                    <span class="speech-tag">ALTER EGO</span>
+                    <span class="speech-tag">{{ ALTER_EGO }}</span>
                     <p>{{hero.alterEgo}}</p>
                 </div>
             }
 
             <div class="card-stats-section">
                 <div class="stat-row">
-                    <div class="stat-label">SUPERPOWER</div>
+                    <div class="stat-label">{{ SUPERPOWER }}</div>
                     <div class="stat-value">{{ hero.superpower }}</div>
                 </div>
+            </div>
+
+            <div class="card-actions">
+                <button mat-flat-button class="action-btn delete-btn" (click)="openDeleteModal(hero.id)"> {{ DELETE }} </button>
             </div>
         </div>
     </div>
