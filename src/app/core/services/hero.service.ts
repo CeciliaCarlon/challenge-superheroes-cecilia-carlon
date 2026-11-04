@@ -9,7 +9,7 @@ import { HEROES } from '../mocks/hero.mock';
 })
 export class HeroService {
 
-  private heroesSubject: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>(HEROES);
+  private readonly heroesSubject: BehaviorSubject<Hero[]> = new BehaviorSubject<Hero[]>(HEROES);
   public heroes$: Observable<Hero[]> = this.heroesSubject.asObservable();
 
   constructor() { }
