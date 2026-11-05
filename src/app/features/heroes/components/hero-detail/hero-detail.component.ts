@@ -9,7 +9,7 @@ import { Hero } from '../../../../core/models/hero.model';
 import { take } from 'rxjs';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
-import { DIALOG_WIDTH, PUBLISHER, ALTER_EGO, SUPERPOWER, DELETE, UNKNOWN } from '../../../../core/constants/app.constants'
+import { CONSTANTS } from '../../../../core/constants/app.constants'
 
 @Component({
   selector: 'app-hero-detail',
@@ -24,11 +24,7 @@ export class HeroDetailComponent implements OnInit{
   private readonly router = inject(Router);
   private readonly heroService = inject(HeroService);
   private readonly dialog = inject(MatDialog);
-  readonly UNKNOWN = UNKNOWN;
-  readonly PUBLISHER = PUBLISHER;
-  readonly ALTER_EGO = ALTER_EGO;
-  readonly SUPERPOWER = SUPERPOWER;
-  readonly DELETE = DELETE;
+  readonly CONSTANTS = CONSTANTS;
   
   $hero = signal<Hero | null>(null);
 
@@ -52,7 +48,7 @@ export class HeroDetailComponent implements OnInit{
 
   openDeleteModal(id: number): void {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
-      width: DIALOG_WIDTH,
+      width: CONSTANTS.DIALOG_WIDTH,
       data: { isDeleting: false, idToDelete: id },
       disableClose: true,
       panelClass: 'custom-arcade-dialog-container'
@@ -62,5 +58,10 @@ export class HeroDetailComponent implements OnInit{
       if (confirmed) this.goBack();
       else console.log('error')
     });
+  }
+
+  onEdit(): void {
+    const id = this.$hero()?.id;
+    if (id) void this.router.navigate(['/heroes', id, 'edit']);
   }
 }

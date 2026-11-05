@@ -144,6 +144,12 @@
             border: 2px solid #000;
             border-radius: 6px;
 
+            &.edit-btn {
+                background-color: #4da6ff;
+                color: #000;
+                &:hover { background-color: #3399ff; }
+            }
+
             &.delete-btn {
                 background-color: #ff4d4d;
                 color: #fff;

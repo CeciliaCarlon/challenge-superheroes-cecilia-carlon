@@ -1,0 +1,69 @@
+<div class="arcade-form-wrapper">
+    @if ($isLoading() || $isSaving()) {
+        <div class="loading-box">
+            <app-loading></app-loading>
+        </div>
+    } @else {
+        <div class="arcade-form-card">
+            <div class="card-header-banner">
+                <span>{{ $isEditMode()? CONSTANTS.EDIT_TITLE : CONSTANTS.CREATE_TITLE }}</span>
+            </div>
+
+            <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="arcade-form">
+                <mat-form-field appearance="outline" class="arcade-field">
+                    <mat-label>{{ CONSTANTS.NAME_FIELD }}</mat-label>
+                    <input id="name-input" matInput formControlName="name" placeholder="{{ CONSTANTS.NAME_PLACEHOLDER }}" />
+                    @if (heroForm.get('name')?.hasError('required') && heroForm.get('name')?.touched) {
+                        <mat-error>{{ CONSTANTS.NAME_FIELD_REQUIRED }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="arcade-field">
+                    <mat-label>{{ CONSTANTS.SUPERPOWER }}</mat-label>
+                    <input id="superpower-input" matInput formControlName="superpower" placeholder="{{ CONSTANTS.SUPERPOWER_PLACEHOLDER }}" />
+                    @if (heroForm.get('superpower')?.hasError('required') && heroForm.get('superpower')?.touched) {
+                        <mat-error>{{ CONSTANTS.SUPERPOWER_FIELD_REQUIRED }}</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="arcade-field">
+                    <mat-label>{{ CONSTANTS.PUBLISHER }}</mat-label>
+                    <mat-select formControlName="publisher">
+                        @for (pub of PUBLISHERS; track pub) {
+                            <mat-option [value]="pub">{{ pub }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="arcade-field">
+                    <mat-label>{{ CONSTANTS.ALTER_EGO }}</mat-label>
+                    <input id="alter-ego-input" matInput formControlName="alterEgo" placeholder="{{ CONSTANTS.ALTER_EGO_PLACEHOLDER }}" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="arcade-field">
+                    <mat-label class="preview-title">{{ CONSTANTS.IMAGE_FIELD }}</mat-label>
+                    <input id="image-url-input" matInput formControlName="imageUrl" placeholder="{{ CONSTANTS.IMAGE_PLACEHOLDER }}" />
+                </mat-form-field>
+
+                @if (heroForm.get('imageUrl')?.value) {
+                    <div class="image-preview-container">
+                        <span class="preview-title">{{ CONSTANTS.IMAGE_PREVIEW_FIELD }}</span>
+                        <div class="preview-box">
+                            <img [src]="heroForm.get('imageUrl')?.value" alt="Preview" />
+                            <div class="overlay-scanline"></div>
+                        </div>
+                    </div>
+                }
+
+                <div class="form-actions">
+                    <button type="button" mat-flat-button class="action-btn cancel-btn arcade-text" (click)="onCancel()">
+                        {{ CONSTANTS.CANCEL }}
+                    </button>
+                    <button type="submit" mat-flat-button class="action-btn save-btn arcade-text" [disabled]="heroForm.invalid">
+                        {{ CONSTANTS.CONFIRM }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    }
+</div>
