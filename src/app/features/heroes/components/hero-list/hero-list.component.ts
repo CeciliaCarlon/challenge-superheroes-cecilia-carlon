@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { RouterLink } from '@angular/router';
 import { DraggableScrollDirective } from '../../../../shared/directives/draggable-scroll.directive'
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
-import { NO_HEROES_MESSAGE } from '../../../../core/constants/app.constants';
+import { CONSTANTS } from '../../../../core/constants/app.constants';
 
 @Component({
   selector: 'app-hero-list',
@@ -20,7 +20,7 @@ import { NO_HEROES_MESSAGE } from '../../../../core/constants/app.constants';
 export class HeroListComponent implements OnInit {
 
   private readonly heroService = inject(HeroService);
-  readonly NO_HEROES_MESSAGE = NO_HEROES_MESSAGE;
+  readonly CONSTANTS = CONSTANTS;
   heroes$!: Observable<Hero[]>;
 
   ngOnInit(): void {

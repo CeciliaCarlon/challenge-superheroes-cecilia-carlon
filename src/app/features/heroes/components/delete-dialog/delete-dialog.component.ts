@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { HeroService } from '../../../../core/services/hero.service';
 import { take } from 'rxjs';
-import { DELETE_HEROE_QUESTION, DELETING_HEROE_LOADING, YES, NO } from '../../../../core/constants/app.constants'
+import { CONSTANTS } from '../../../../core/constants/app.constants'
 
 @Component({
   selector: 'app-delete-dialog',
@@ -16,10 +16,7 @@ import { DELETE_HEROE_QUESTION, DELETING_HEROE_LOADING, YES, NO } from '../../..
 export class DeleteDialogComponent {
 
   private readonly heroService = inject(HeroService);
-  readonly DELETE_HEROE_QUESTION = DELETE_HEROE_QUESTION;
-  readonly DELETING_HEROE_LOADING = DELETING_HEROE_LOADING;
-  readonly YES = YES;
-  readonly NO = NO;
+  readonly CONSTANTS = CONSTANTS;
 
   dialogRef = inject(MatDialogRef<DeleteDialogComponent>);
   data = inject<{ isDeleting: boolean, idToDelete: number }>(MAT_DIALOG_DATA);

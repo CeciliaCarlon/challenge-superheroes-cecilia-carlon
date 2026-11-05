@@ -1,11 +1,11 @@
 <div class="arcade-dialog-content">
     @if (!$isDeleting()) {
-        <h3 class="arcade-text modal-title">{{ DELETE_HEROE_QUESTION }}</h3>
+        <h3 class="arcade-text modal-title">{{ CONSTANTS.DELETE_HEROE_QUESTION }}</h3>
         <div class="modal-actions">
-            <button mat-flat-button class="modal-btn no-btn arcade-text" (click)="onCancel()">{{ NO }}</button>
-            <button mat-flat-button class="modal-btn yes-btn arcade-text" (click)="onConfirm()">{{ YES }}</button>
+            <button mat-flat-button class="modal-btn no-btn arcade-text" (click)="onCancel()">{{ CONSTANTS.NO }}</button>
+            <button mat-flat-button class="modal-btn yes-btn arcade-text" (click)="onConfirm()">{{ CONSTANTS.YES }}</button>
         </div>
     } @else {
-        <h1 class="arcade-loading-text">{{ DELETING_HEROE_LOADING }}</h1>
+        <h1 class="arcade-loading-text">{{ CONSTANTS.DELETING_HEROE_LOADING }}</h1>
     }
 </div>

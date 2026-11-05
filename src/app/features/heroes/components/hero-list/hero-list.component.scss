@@ -26,6 +26,7 @@
 
 .hero-tab {
     flex: 0 0 220px;
+    width: 250px !important;
     height: 340px;
     background: #1a1a24;
     border-radius: 8px;
@@ -82,7 +83,6 @@
 
         .hero-name {
             font-size: 0.65rem;
-            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
