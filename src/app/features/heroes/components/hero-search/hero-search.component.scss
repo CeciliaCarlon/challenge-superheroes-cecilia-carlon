@@ -1,0 +1,38 @@
+.arcade-search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .search-input-wrapper {
+        display: flex;
+        align-items: center;
+        background-color: #111;
+        border: 3px solid #000;
+        box-shadow: 4px 4px 0px #000;
+        padding: 8px 16px;
+        width: 100%;
+        max-width: 720px;
+        height: 25px;
+
+        .arcade-label {
+            color: #ffcc00;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .arcade-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            width: 100%;
+            font-size: 1rem;
+            letter-spacing: 1px;
+
+            &::placeholder {
+                color: #666;
+            }
+        }
+    }
+}

@@ -29,9 +29,7 @@ export class HeroService {
     if(!cleanTerm) return this.heroes$;
 
     return this.heroes$.pipe(
-      map(heroes => heroes.filter(hero => hero.name.toLocaleLowerCase().includes(cleanTerm)))
-      ,delay(2000)
-    );
+      map(heroes => heroes.filter(hero => hero.name.toLocaleLowerCase().includes(cleanTerm))));
   }
 
   addHero(hero: Omit<Hero, 'id'>): Observable<Hero> {

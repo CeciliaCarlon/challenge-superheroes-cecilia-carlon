@@ -25,5 +25,6 @@ export const CONSTANTS = {
     ALTER_EGO_PLACEHOLDER: 'Ingresar alter ego del superhéroe',
     IMAGE_FIELD: 'IMAGEN',
     IMAGE_PLACEHOLDER: 'Ingresar url de la imagen',
-    IMAGE_PREVIEW_FIELD: 'PREVIEW DE LA IMAGEN'
+    IMAGE_PREVIEW_FIELD: 'PREVIEW DE LA IMAGEN',
+    SEARCH_PLACEHOLDER: 'Buscá a un superhéroe'
 }

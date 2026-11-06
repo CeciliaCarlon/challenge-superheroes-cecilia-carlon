@@ -5,13 +5,15 @@ import { HeroService } from '../../../../core/services/hero.service';
 import { RouterLink } from '@angular/router';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { CONSTANTS } from '../../../../core/constants/app.constants';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
+import { switchMap } from 'rxjs';
+import { HeroSearchComponent } from '../hero-search/hero-search.component';
 
 @Component({
   selector: 'app-hero-list',
   standalone: true,
-  imports: [ CommonModule, MatButtonModule, MatIconModule, RouterLink, LoadingComponent
+  imports: [ CommonModule, MatButtonModule, MatIconModule, HeroSearchComponent, RouterLink, LoadingComponent
   ],
   templateUrl: './hero-list.component.html',
   styleUrl: './hero-list.component.scss'
@@ -20,10 +22,19 @@ export class HeroListComponent {
 
   private readonly heroService = inject(HeroService);
   readonly CONSTANTS = CONSTANTS;
+  readonly itemsPerPage = 4;
 
-  $heroes = toSignal(this.heroService.getHeroes());
   $currentPage = signal<number>(1);
-  itemsPerPage = 4;
+  $searchTerm = signal<string>('');
+  $heroes = toSignal(
+    toObservable(this.$searchTerm).pipe(
+      switchMap(term => {
+        if (!term || term.length < 3) {
+          return this.heroService.getHeroes();
+        }
+        return this.heroService.searchHeroes(term);
+      })
+    ));
 
   $totalPages = computed<number>(() => {
     const heroes = this.$heroes();
@@ -66,6 +77,11 @@ export class HeroListComponent {
       this.nextPage();
     else
       this.prevPage();
+  }
+
+  onSearchChange(term: string): void {
+    this.$searchTerm.set(term);
+    this.$currentPage.set(1);
   }
 
 }

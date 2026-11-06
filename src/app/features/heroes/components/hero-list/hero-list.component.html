@@ -1,5 +1,6 @@
 <div class="arcade-container">
     @if ($heroes(); as heroes) {
+        <app-hero-search class="search-bar" (searchChange)="onSearchChange($event)"></app-hero-search>
         @if (heroes.length > 0) {
             <div class="carousel-wrapper ">
                 <button mat-icon-button class="nav-arrow left" [disabled]="$currentPage() === 1" (click)="prevPage()">
