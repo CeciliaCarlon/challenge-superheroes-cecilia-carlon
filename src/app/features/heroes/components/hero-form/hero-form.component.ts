@@ -67,7 +67,7 @@ export class HeroFormComponent implements OnInit {
         } else this.goToHeroesList();
       });
     } else {
-      //CREATION MODE
+      this.$isLoading.set(false);
       this.$isEditMode.set(false);
     }
   }
@@ -91,7 +91,17 @@ export class HeroFormComponent implements OnInit {
         error: () => this.$isSaving.set(false)
       });
     } else {
-      //CREATION LOGIC
+      const newHeroData = this.heroForm.value;
+      this.heroService.addHero(newHeroData).pipe(take(1)).subscribe({
+        next: (newHero) => {
+          if (newHero) {
+            this.$heroId.set(newHero.id);
+            this.goToHeroeDetail();
+          }
+          else this.$isSaving.set(false);
+        },
+        error: (err) => { console.error('Error while creating the superheroe: ', err) }
+      })
     }
   }
 

@@ -9,6 +9,10 @@ export const routes: Routes = [
         path: 'heroes',
         loadComponent: () => import('./features/heroes/components/hero-list/hero-list.component').then(m => m.HeroListComponent)
     },
+    {
+        path: 'heroes/add',
+        loadComponent: () => import('./features/heroes/components/hero-form/hero-form.component').then(m => m.HeroFormComponent)
+    },
     { 
         path: 'heroes/:id',
         loadComponent: () => import('./features/heroes/components/hero-detail/hero-detail.component').then(m => m.HeroDetailComponent)
