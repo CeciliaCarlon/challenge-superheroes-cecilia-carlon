@@ -6,6 +6,7 @@ const TOTAL_BLOCKS = 10;
 
 @Component({
   selector: 'app-loading',
+  standalone: true,
   imports: [ CommonModule ],
   templateUrl: './loading.component.html',
   styleUrl: './loading.component.scss'

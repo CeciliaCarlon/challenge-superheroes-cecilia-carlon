@@ -23,6 +23,7 @@ describe('HeroFormComponent', () => {
 
   const setupTestBed = async (idParam: string | null = null) => {
     heroServiceSpy = jasmine.createSpyObj('HeroService', ['getHeroById', 'addHero', 'updateHero']);
+    heroServiceSpy.getHeroById.and.returnValue(of(mockHero));
 
     const ActivatedRouteStub = {
       snapshot: {
@@ -86,7 +87,7 @@ describe('HeroFormComponent', () => {
         alterEgo: 'Clark',
         imageUrl: 'superman.jpg'
       });
-      expect(router.navigate).toHaveBeenCalledWith(['/heroes']);
+      expect(router.navigate).toHaveBeenCalledWith(['/heroes', 1]);
     });
 
     it ('should not submit if form is invalid', () => {
@@ -101,9 +102,8 @@ describe('HeroFormComponent', () => {
     });
   });
 
-  describe('When in Edit Mode (with valid ID', () => {
+  describe('When in Edit Mode (with valid ID)', () => {
     beforeEach(async () => {
-      heroServiceSpy.getHeroById.and.returnValue(of(mockHero));
       await setupTestBed('1');
       fixture.detectChanges();
     });
@@ -117,6 +117,8 @@ describe('HeroFormComponent', () => {
     });
 
     it ('should call updateHero and navigate to detail view on successful submit', () => {
+      heroServiceSpy.updateHero.and.returnValue(of(mockHero));
+
       component.heroForm.patchValue({ name: 'Batman Updated' });
       component.onSubmit();
 
