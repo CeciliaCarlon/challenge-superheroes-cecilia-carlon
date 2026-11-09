@@ -1,59 +1,36 @@
 # ChallengeSuperheroes
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.27.
+Aplicación web Single Page Application (SPA) desarrollada en **Angular 19+** para la gestión y búsqueda de superhéroes, implementando arquitectura moderna con componentes *standalone*, señales (*Signals*) y flujos reactivos con RxJS.
 
-## Development server
+---
 
-To start a local development server, run:
+## Tecnologías y Arquitectura
 
-```bash
-ng serve
-```
+- **Framework:** Angular 19+ (Standalone Components, Signals, Reactive Forms, Router)
+- **Reactividad:** RxJS (`debounceTime`, `distinctUntilChanged`, `switchMap`, `takeUntilDestroyed`)
+- **Testing:** Jasmine & Karma
+- **Contenedor:** Docker (Multi-stage build con Nginx)
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Ejecución Local
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+1. **Instalar dependencias:**
+    ```bash
+    npm install
 
-```bash
-ng generate component component-name
-```
+2. **Instalar servidor de desarrollo:**
+    ```bash
+    npm start
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Ejecutar pruebas unitarias:**
+    ```bash
+    npm test
 
-```bash
-ng generate --help
-```
+4. **Ejecución con Docker:**
+    ```bash
+    docker build -t challenge-superheroes-app .
+    docker run -d -p 8080:80 --name heroes-container challenge-superheroes-app
+    ```
+    Abrir el navegador con la url: http://localhost:8080
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
